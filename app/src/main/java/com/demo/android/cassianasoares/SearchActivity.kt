@@ -39,7 +39,7 @@ class SearchActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         val booksList = response.body()!!.getBooks()
 
-                        booksAdapter = BookAdapter(applicationContext, booksList)
+                        booksAdapter = BookAdapter(this@SearchActivity, booksList)
                         search_recyclerview.adapter = booksAdapter
                     }else{
                         Toast.makeText(applicationContext, "Livro não encontrada", Toast.LENGTH_SHORT).show()
