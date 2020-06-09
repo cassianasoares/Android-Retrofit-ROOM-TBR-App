@@ -1,4 +1,4 @@
-package com.demo.android.cassianasoares
+package com.demo.android.cassianasoares.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,4 +1,4 @@
-package com.demo.android.cassianasoares
+package com.demo.android.cassianasoares.api.model
 
 class BookModel(
     var id: String,

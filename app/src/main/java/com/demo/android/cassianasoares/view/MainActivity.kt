@@ -1,13 +1,10 @@
-package com.demo.android.cassianasoares
+package com.demo.android.cassianasoares.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.demo.android.cassianasoares.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,5 +15,9 @@ class MainActivity : AppCompatActivity() {
 
     fun getBook(view: View) {
         startActivity( Intent(this, SearchActivity::class.java))
+    }
+
+    fun testRoom(view: View) {
+        startActivity( Intent(this, BookDetailRoomActivity::class.java))
     }
 }

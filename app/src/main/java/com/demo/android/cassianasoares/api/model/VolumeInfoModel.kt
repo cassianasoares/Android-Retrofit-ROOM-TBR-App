@@ -1,4 +1,4 @@
-package com.demo.android.cassianasoares
+package com.demo.android.cassianasoares.api.model
 
 class VolumeInfoModel (
     var title: String,
@@ -9,6 +9,11 @@ class VolumeInfoModel (
     var description: String,
     var imageLinks: ImageLinksModel,
     var pageCount: Int
-)
+){
+    fun imageDefault(link: String){
+        imageLinks.thumbnail = link
+    }
+}
 
-class ImageLinksModel (var thumbnail: String)
+class ImageLinksModel (
+    var thumbnail: String )

@@ -1,5 +1,7 @@
-package com.demo.android.cassianasoares
+package com.demo.android.cassianasoares.api
 
+import com.demo.android.cassianasoares.api.model.BookListModel
+import com.demo.android.cassianasoares.api.model.BookModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
