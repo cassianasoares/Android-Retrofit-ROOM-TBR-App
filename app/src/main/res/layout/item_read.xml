@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="120dp"
-    android:layout_height="190dp"
+    android:layout_height="210dp"
     android:orientation="vertical"
     android:layout_margin="4dp">
 
     <ImageView
-        android:id="@+id/book_image_ToRead"
+        android:id="@+id/book_image_BookRead"
         android:layout_width="95dp"
         android:src="@drawable/ic_image_default"
         android:layout_height="140dp"
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/txt_book_ToRead"
+        android:id="@+id/txt_book_BookRead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="livro"
@@ -24,7 +24,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txt_authors_ToRead"
+        android:id="@+id/txt_authors_BookRead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -32,5 +32,20 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textSize="12sp" />
-    
+
+    <RatingBar
+        android:id="@+id/rating_bar_BookRead"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:isIndicator="false"
+        android:layout_marginTop="4dp"
+        android:progressTint="#FFEB3B"
+        android:numStars="5"
+        android:rating="5"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
+        android:stepSize="1" />
+
 </LinearLayout>

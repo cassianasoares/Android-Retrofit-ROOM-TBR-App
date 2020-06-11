@@ -89,6 +89,12 @@ class BookDetailApiActivity : AppCompatActivity() {
         intent.putExtra("NOTE", book.note)
         intent.putExtra("FAVORITE", book.favorite)
         startActivity(intent)
+        onSupportNavigateUp()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
 }

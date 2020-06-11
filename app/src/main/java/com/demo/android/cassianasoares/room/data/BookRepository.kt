@@ -6,11 +6,7 @@ interface BookRepository {
 
     fun saveBook(book: Book)
 
-    fun getAllReadingBooks(status: String): LiveData<List<Book>>
-
-    fun getAllReadBooks(status: String): LiveData<List<Book>>
-
-    fun getAllToReadBooks(status: String): LiveData<List<Book>>
+    fun getAllBooksByStatus(status: String): LiveData<List<Book>>
 
     fun getBook(id: String): LiveData<Book>
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="242dp"
+    android:orientation="vertical"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/book_image_Reading"
+        android:layout_width="115dp"
+        android:src="@drawable/ic_image_default"
+        android:layout_height="160dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/txt_book_Reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="livro"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_authors_Reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="autor"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <ProgressBar
+        android:id="@+id/progressbar_Reading"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="20"/>
+
+    <TextView
+        android:id="@+id/txt_percent_Reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="20%"
+        android:textAlignment="center"
+        android:textSize="12sp"/>
+
+
+</LinearLayout>

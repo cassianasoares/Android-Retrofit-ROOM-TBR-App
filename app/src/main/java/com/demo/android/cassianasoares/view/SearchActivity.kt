@@ -1,9 +1,11 @@
 package com.demo.android.cassianasoares.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.android.cassianasoares.R
@@ -23,6 +25,7 @@ class SearchActivity : AppCompatActivity() {
     var apiInterface: ApiInterface? = null
     var booksApiAdapter: BookApiAdapter? = null
     var link = "https://books.google.com/books/content?id=ksdeAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE718AUGEFaRcEfXmQrMoJkYudWE0aB8H58v4-E31cy64tPLAsKo-mtugPqdnZLNA2X3R9m9BbbHP_cGVtljZynhbR8A7ebcUjt9cggp3Lvo0HbaAgwDTAPKuHr-5xF_aYUP-pAqT&source=gbs_api"
+    var searchview: SearchView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,84 +33,88 @@ class SearchActivity : AppCompatActivity() {
 
         apiInterface = ApiClient().getClient().create(ApiInterface::class.java)
         search_recyclerview.layoutManager = LinearLayoutManager(this)
+        searchview = findViewById(R.id.search_api)
+        searchBook()
     }
 
 
-    fun searchBook(view: View){
-        val bookQuery = edt_query.text.toString()
-        Log.i("isQueryGet", bookQuery)
-        if (bookQuery != null){
-        val callBooks = apiInterface!!.getBooksUsingQuery(bookQuery)
-        callBooks.enqueue(object : Callback<BookListModel>{
+    fun searchBook(){
+        searchview!!.setFocusable(true)
+        searchview!!.setIconified(false)
+        searchview!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-                override fun onResponse(call: Call<BookListModel>, response: Response<BookListModel>) {
-                    if (response.isSuccessful){
-                        val booksList = response.body()!!.getBooks()
-                        val booksListReview: ArrayList<BookModel>? = ArrayList()
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("isQueryGet", query)
+                if (query != null) {
+                    val callBooks = apiInterface!!.getBooksUsingQuery(query)
+                    callBooks.enqueue(object : Callback<BookListModel> {
 
-                        for (book in booksList){
-                            if (book.volumeInfo.authors == null){
-                                book.volumeInfo.authors = listOf("Desconhecido")
-                            }
-                            if (book.volumeInfo.categories == null){
-                                book.volumeInfo.categories = listOf("Nenhuma")
-                            }
-                            if(book.volumeInfo.description == null){
-                                book.volumeInfo.description = "Nenhuma"
-                            }
-                            if (book.volumeInfo.publisher == null){
-                                book.volumeInfo.publisher = "Deconhecida"
-                            }
-                            if (book.volumeInfo.language == null){
-                                book.volumeInfo.language = "Desconhecida"
-                            }
+                        override fun onResponse(
+                            call: Call<BookListModel>,
+                            response: Response<BookListModel>
+                        ) {
+                            if (response.isSuccessful) {
+                                val booksList = response.body()!!.getBooks()
+                                val booksListReview: ArrayList<BookModel>? = ArrayList()
+
+                                for (book in booksList) {
+                                    if (book.volumeInfo.authors == null) {
+                                        book.volumeInfo.authors = listOf("Desconhecido")
+                                    }
+                                    if (book.volumeInfo.categories == null) {
+                                        book.volumeInfo.categories = listOf("Nenhuma")
+                                    }
+                                    if (book.volumeInfo.description == null) {
+                                        book.volumeInfo.description = "Nenhuma"
+                                    }
+                                    if (book.volumeInfo.publisher == null) {
+                                        book.volumeInfo.publisher = "Deconhecida"
+                                    }
+                                    if (book.volumeInfo.language == null) {
+                                        book.volumeInfo.language = "Desconhecida"
+                                    }
 
 
-                            booksListReview!!.add(book)
-                            Log.i("TesteArray", booksListReview.toString())
+                                    booksListReview!!.add(book)
+                                    Log.i("TesteArray", booksListReview.toString())
+                                }
+
+                                booksApiAdapter =
+                                    BookApiAdapter(
+                                        this@SearchActivity,
+                                        booksListReview!!
+                                    )
+                                search_recyclerview.adapter = booksApiAdapter
+                            } else {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Livro não encontrada",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
 
-                        booksApiAdapter =
-                            BookApiAdapter(
-                                this@SearchActivity,
-                                booksListReview!!
-                            )
-                        search_recyclerview.adapter = booksApiAdapter
-                    }else{
-                        Toast.makeText(applicationContext, "Livro não encontrada", Toast.LENGTH_SHORT).show()
-                    }
+                        override fun onFailure(call: Call<BookListModel>, t: Throwable) {
+                            Log.i(TAG, "onFailure: " + t.localizedMessage)
+                        }
+
+                    })
+
+                } else {
+                    Toast.makeText(this@SearchActivity, "Digite o nome do livro", Toast.LENGTH_SHORT).show()
+                    searchview!!.setFocusable(true)
                 }
+                return true
+            }
 
-                override fun onFailure(call: Call<BookListModel>, t: Throwable) {
-                    Log.i(TAG, "onFailure: " + t.localizedMessage)
-                }
-
-            })
-
-        }else{
-            Toast.makeText(this, "Digite o nome do livro", Toast.LENGTH_SHORT).show()
-            edt_query.requestFocus()
-        }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+        //fim
     }
 
-
-    /*fun (view: View) {
-        val book = edt_query.text.toString()
-        if (book != null){
-            val callBook = apiInterface!!.getBook(book)
-            callBook.enqueue(object : Callback<BookModel> {
-                override fun onResponse(call: Call<BookModel>, response: Response<BookModel>) {
-
-                    //Log.i(TAG, "onResponse: " + response.body())
-                }
-
-                override fun onFailure(call: Call<BookModel>, t: Throwable) {
-                    Log.i(TAG, "onFailure: " + t.localizedMessage)
-                }
-            })
-        }else{
-            Toast.makeText(this, "Digite o nome do livro", Toast.LENGTH_SHORT).show()
-            edt_query.requestFocus()
-        }
-    }*/
+    fun backToMain(view: View) {
+        finish()
+    }
 }

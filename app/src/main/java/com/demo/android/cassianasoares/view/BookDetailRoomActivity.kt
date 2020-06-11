@@ -1,5 +1,6 @@
 package com.demo.android.cassianasoares.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -70,7 +71,24 @@ class BookDetailRoomActivity : AppCompatActivity() {
         callBook.enqueue(object : Callback<BookModel> {
             override fun onResponse(call: Call<BookModel>, response: Response<BookModel>) {
                 val book =  response.body()
-                txt_publisher_room.text = book!!.volumeInfo.publisher
+
+                if (book!!.volumeInfo.authors == null){
+                    book.volumeInfo.authors = listOf("Desconhecido")
+                }
+                if (book.volumeInfo.categories == null){
+                    book.volumeInfo.categories = listOf("Nenhuma")
+                }
+                if(book.volumeInfo.description == null){
+                    book.volumeInfo.description = "Nenhuma"
+                }
+                if (book.volumeInfo.publisher == null){
+                    book.volumeInfo.publisher = "Deconhecida"
+                }
+                if (book.volumeInfo.language == null){
+                    book.volumeInfo.language = "Desconhecida"
+                }
+
+                txt_publisher_room.text = book.volumeInfo.publisher
                 txt_categories_room.text = book.volumeInfo.categories.toString().replace("[", "").replace("]", "")
                 txt_idioma_room.text = book.volumeInfo.language
                 txt_description_room.text = book.volumeInfo.description
@@ -88,8 +106,14 @@ class BookDetailRoomActivity : AppCompatActivity() {
             btn_start_read.visibility = View.VISIBLE
         }else if(status == "Reading"){
             rating_bar_indicator.visibility = View.VISIBLE
+            rating_bar_indicator.rating = 3.toFloat()
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
 }

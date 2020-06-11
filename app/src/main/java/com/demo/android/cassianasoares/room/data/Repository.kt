@@ -15,18 +15,9 @@ class Repository: BookRepository {
         AsyncTask.execute { bookDao.insert(book) }
     }
 
-    override fun getAllReadingBooks(status: String): LiveData<List<Book>> {
-        val allReadingBooks by lazy { bookDao.getAllReadingBooks(status)}
-        return allReadingBooks
-    }
 
-    override fun getAllReadBooks(status: String): LiveData<List<Book>> {
-        val allReadBooks by lazy { bookDao.getAllReadBooks(status)}
-        return allReadBooks
-    }
-
-    override fun getAllToReadBooks(status: String): LiveData<List<Book>> {
-        val allToReadBooks by lazy { bookDao.getAllToReadBooks(status)}
+    override fun getAllBooksByStatus(status: String): LiveData<List<Book>> {
+        val allToReadBooks by lazy { bookDao.getAllBooksByStatus(status)}
         return allToReadBooks
     }
 

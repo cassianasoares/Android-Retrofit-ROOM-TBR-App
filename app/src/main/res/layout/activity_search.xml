@@ -6,37 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".view.SearchActivity">
 
-    <EditText
-        android:id="@+id/edt_query"
+    <SearchView
+        android:id="@+id/search_api"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_search"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_search"
         app:layout_constraintTop_toTopOf="parent"
-        android:inputType="text" />
+        android:iconifiedByDefault="false"
+        android:background="@color/colorSearch"
+        android:queryHint="Search Book" />
 
 
-    <Button
+    <ImageView
         android:id="@+id/btn_search"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="searchBook"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="backToMain"
+        android:src="@drawable/ic_back"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_query"
+        app:layout_constraintTop_toBottomOf="@+id/search_api"
         tools:listitem="@layout/item_search">
 
     </androidx.recyclerview.widget.RecyclerView>

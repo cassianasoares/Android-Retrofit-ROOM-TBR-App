@@ -13,7 +13,7 @@ import com.demo.android.cassianasoares.room.data.Book
 import com.demo.android.cassianasoares.view.BookDetailRoomActivity
 import kotlinx.android.synthetic.main.item_to_read.view.*
 
-class BookToReadRoomAdpater(private val context: Context): RecyclerView.Adapter<BookToReadRoomAdpater.BookToReadViewHolder>() {
+class BookToReadRoomAdapter(private val context: Context): RecyclerView.Adapter<BookToReadRoomAdapter.BookToReadViewHolder>() {
 
     private var books: List<Book>? = ArrayList()
 
