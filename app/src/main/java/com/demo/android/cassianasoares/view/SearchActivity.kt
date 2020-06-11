@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.android.cassianasoares.R
 import com.demo.android.cassianasoares.api.ApiClient
 import com.demo.android.cassianasoares.api.ApiInterface
-import com.demo.android.cassianasoares.adapters.BookAdapter
+import com.demo.android.cassianasoares.adapters.BookApiAdapter
 import com.demo.android.cassianasoares.api.model.BookListModel
 import com.demo.android.cassianasoares.api.model.BookModel
 import kotlinx.android.synthetic.main.activity_search.*
@@ -21,8 +21,7 @@ class SearchActivity : AppCompatActivity() {
 
     private val TAG = "SearchActivity"
     var apiInterface: ApiInterface? = null
-    var booksAdapter: BookAdapter? = null
-    var bookList: List<BookModel>? = ArrayList()
+    var booksApiAdapter: BookApiAdapter? = null
     var link = "https://books.google.com/books/content?id=ksdeAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE718AUGEFaRcEfXmQrMoJkYudWE0aB8H58v4-E31cy64tPLAsKo-mtugPqdnZLNA2X3R9m9BbbHP_cGVtljZynhbR8A7ebcUjt9cggp3Lvo0HbaAgwDTAPKuHr-5xF_aYUP-pAqT&source=gbs_api"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,12 +67,12 @@ class SearchActivity : AppCompatActivity() {
                             Log.i("TesteArray", booksListReview.toString())
                         }
 
-                        booksAdapter =
-                            BookAdapter(
+                        booksApiAdapter =
+                            BookApiAdapter(
                                 this@SearchActivity,
                                 booksListReview!!
                             )
-                        search_recyclerview.adapter = booksAdapter
+                        search_recyclerview.adapter = booksApiAdapter
                     }else{
                         Toast.makeText(applicationContext, "Livro não encontrada", Toast.LENGTH_SHORT).show()
                     }

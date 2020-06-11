@@ -33,11 +33,12 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/toRead_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        tools:listitem="@layout/item_to_read"
-        android:orientation="horizontal"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />

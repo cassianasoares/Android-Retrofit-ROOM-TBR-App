@@ -13,7 +13,7 @@ import com.demo.android.cassianasoares.R
 import com.demo.android.cassianasoares.api.model.BookModel
 import kotlinx.android.synthetic.main.item_search.view.*
 
-class BookAdapter(private val context: Context, private var books: ArrayList<BookModel>): RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+class BookApiAdapter(private val context: Context, private var books: ArrayList<BookModel>): RecyclerView.Adapter<BookApiAdapter.BookViewHolder>() {
 
     var link: String = "https://books.google.com/books/content?id=ksdeAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE718AUGEFaRcEfXmQrMoJkYudWE0aB8H58v4-E31cy64tPLAsKo-mtugPqdnZLNA2X3R9m9BbbHP_cGVtljZynhbR8A7ebcUjt9cggp3Lvo0HbaAgwDTAPKuHr-5xF_aYUP-pAqT&source=gbs_api"
 
