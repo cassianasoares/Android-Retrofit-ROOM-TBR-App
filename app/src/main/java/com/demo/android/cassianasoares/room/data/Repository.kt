@@ -4,6 +4,7 @@ import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.demo.android.cassianasoares.BookApplication
 import com.demo.android.cassianasoares.room.data.db.BookDao
+import com.demo.android.cassianasoares.room.data.model.Book
 
 class Repository: BookRepository {
 
@@ -13,6 +14,11 @@ class Repository: BookRepository {
 
     override fun saveBook(book: Book) {
         AsyncTask.execute { bookDao.insert(book) }
+    }
+
+    override fun getAllBooksSaved(): LiveData<List<Book>> {
+        val allBooks by lazy { bookDao.getAllBooks()}
+        return allBooks
     }
 
 
@@ -30,8 +36,8 @@ class Repository: BookRepository {
         AsyncTask.execute { bookDao.updateStatus(status, id)}
     }
 
-    override fun updatePageRead(n_read_pages: Int, id: String) {
-        AsyncTask.execute { bookDao.updatePageRead(n_read_pages, id) }
+    override fun updatePageRead(n_read_page: Int, id: String) {
+        AsyncTask.execute { bookDao.updatePageRead(n_read_page, id) }
     }
 
     override fun updateNote(note: Int, id: String) {

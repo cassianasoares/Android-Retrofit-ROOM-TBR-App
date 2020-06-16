@@ -1,4 +1,4 @@
-package com.demo.android.cassianasoares.room.data
+package com.demo.android.cassianasoares.room.data.model
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

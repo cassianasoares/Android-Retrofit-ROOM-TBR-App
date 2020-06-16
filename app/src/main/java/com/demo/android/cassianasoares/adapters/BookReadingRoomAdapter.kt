@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.demo.android.cassianasoares.R
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 import com.demo.android.cassianasoares.view.BookDetailRoomActivity
 import kotlinx.android.synthetic.main.item_reading.view.*
 
@@ -23,6 +23,7 @@ class BookReadingRoomAdapter(val context: Context): RecyclerView.Adapter<BookRea
         var txt_book_authors = itemView.txt_authors_Reading
         var progressBar = itemView.progressbar_Reading
         var txt_percent = itemView.txt_percent_Reading
+        var image_favorite = itemView.image_isfavorite_Reading
 
         fun bind(book: Book){
             Glide.with(itemView).load(book.url_image).into(book_image)
@@ -31,6 +32,11 @@ class BookReadingRoomAdapter(val context: Context): RecyclerView.Adapter<BookRea
             val read_percent = (book.n_read_pages * 100) / book.n_pages
             progressBar.progress = read_percent
             txt_percent.text = read_percent.toString() + "%"
+            if (book.favorite == true){
+                image_favorite.visibility = View.VISIBLE
+            }else{
+                image_favorite.visibility = View.INVISIBLE
+            }
         }
     }
 

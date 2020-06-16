@@ -1,10 +1,13 @@
 package com.demo.android.cassianasoares.room.data
 
 import androidx.lifecycle.LiveData
+import com.demo.android.cassianasoares.room.data.model.Book
 
 interface BookRepository {
 
     fun saveBook(book: Book)
+
+    fun getAllBooksSaved(): LiveData<List<Book>>
 
     fun getAllBooksByStatus(status: String): LiveData<List<Book>>
 

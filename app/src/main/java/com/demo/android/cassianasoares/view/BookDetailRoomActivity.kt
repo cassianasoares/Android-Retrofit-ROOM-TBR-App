@@ -15,7 +15,7 @@ import com.demo.android.cassianasoares.R
 import com.demo.android.cassianasoares.api.ApiClient
 import com.demo.android.cassianasoares.api.ApiInterface
 import com.demo.android.cassianasoares.api.model.BookModel
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 import com.demo.android.cassianasoares.room.data.Repository
 import com.demo.android.cassianasoares.viewModel.BookRoomViewModel
 import kotlinx.android.synthetic.main.activity_book_detail_room.*

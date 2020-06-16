@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
 import com.demo.android.cassianasoares.R
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 import com.demo.android.cassianasoares.room.data.Repository
 import com.demo.android.cassianasoares.viewModel.BookApiViewModel
 import kotlinx.android.synthetic.main.activity_book_detail_api.*
@@ -58,7 +58,18 @@ class BookDetailApiActivity : AppCompatActivity() {
 
     fun saveBookToRead(view: View) {
         menu_Api.close(true)
-        val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, TO_READ, book_note, favorite)
+        val book: Book =
+            Book(
+                id!!,
+                name!!,
+                authors!!,
+                url_image!!,
+                nPages!!,
+                nReadPages,
+                TO_READ,
+                book_note,
+                favorite
+            )
         bookApiViewModel.saveBookFromApi(book)
 
         sendBookData(book)
@@ -66,7 +77,18 @@ class BookDetailApiActivity : AppCompatActivity() {
 
     fun saveBookRead(view: View) {
         menu_Api.close(true)
-        val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, ALREADY_READ, book_note, favorite)
+        val book: Book =
+            Book(
+                id!!,
+                name!!,
+                authors!!,
+                url_image!!,
+                nPages!!,
+                nReadPages,
+                ALREADY_READ,
+                book_note,
+                favorite
+            )
         bookApiViewModel.saveBookFromApi(book)
 
         sendBookData(book)
@@ -74,7 +96,18 @@ class BookDetailApiActivity : AppCompatActivity() {
 
     fun saveBookReading(view: View) {
         menu_Api.close(true)
-        val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, READING_NOW, book_note, favorite)
+        val book: Book =
+            Book(
+                id!!,
+                name!!,
+                authors!!,
+                url_image!!,
+                nPages!!,
+                nReadPages,
+                READING_NOW,
+                book_note,
+                favorite
+            )
         bookApiViewModel.saveBookFromApi(book)
 
         sendBookData(book)

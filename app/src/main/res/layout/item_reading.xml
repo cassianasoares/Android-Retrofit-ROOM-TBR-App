@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="160dp"
     android:layout_height="262dp"
-    android:orientation="vertical"
     android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/book_image_Reading"
         android:layout_width="135dp"
-        android:src="@drawable/ic_image_default"
         android:layout_height="180dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:src="@drawable/ic_image_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_book_Reading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="livro"
-        android:layout_marginTop="8dp"
+        android:maxLines="1"
         android:textAlignment="center"
         android:textSize="14sp"
-        android:maxLines="1"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/book_image_Reading"/>
 
     <TextView
         android:id="@+id/txt_authors_Reading"
@@ -31,14 +36,21 @@
         android:hint="autor"
         android:maxLines="1"
         android:textAlignment="center"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_book_Reading"/>
 
     <ProgressBar
         android:id="@+id/progressbar_Reading"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="20"/>
+        android:progress="20"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_authors_Reading"/>
 
     <TextView
         android:id="@+id/txt_percent_Reading"
@@ -46,7 +58,22 @@
         android:layout_height="wrap_content"
         android:hint="20%"
         android:textAlignment="center"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressbar_Reading"/>
 
+    <ImageView
+        android:id="@+id/image_isfavorite_Reading"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/favorite_image_background"
+        android:src="@drawable/ic_favorite_main"
+        android:visibility="invisible"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

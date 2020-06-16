@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.demo.android.cassianasoares.R
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 import com.demo.android.cassianasoares.view.BookDetailRoomActivity
 import kotlinx.android.synthetic.main.item_read.view.*
 
@@ -49,7 +49,7 @@ class BookReadRoomAdapter(val context: Context): RecyclerView.Adapter<BookReadRo
         return books!!.size
     }
 
-    internal fun setBooksRead(books: List<Book>) {
+    internal fun setBooksRead(books: List<Book>){
         this.books = books
         notifyDataSetChanged()
     }

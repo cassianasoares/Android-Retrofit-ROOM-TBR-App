@@ -2,7 +2,7 @@ package com.demo.android.cassianasoares.room.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 
 
 @Dao
@@ -10,6 +10,9 @@ interface BookDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(book: Book)
+
+    @Query("SELECT * FROM book")
+    fun getAllBooks(): LiveData<List<Book>>
 
     @Query("SELECT * FROM book WHERE status=:status")
     fun getAllBooksByStatus(status: String): LiveData<List<Book>>

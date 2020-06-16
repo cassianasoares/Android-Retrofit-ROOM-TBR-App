@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.demo.android.cassianasoares.R
-import com.demo.android.cassianasoares.room.data.Book
+import com.demo.android.cassianasoares.room.data.model.Book
 import com.demo.android.cassianasoares.room.data.Repository
 import com.demo.android.cassianasoares.viewModel.EditBookViewModel
 import kotlinx.android.synthetic.main.activity_edit_book.*
@@ -103,8 +103,11 @@ class EditBook : AppCompatActivity() {
             if (n_lidas == n_total){
                 status = "Read"
             }
-                val bookSelect = Book(id, name_book!!, name_author!!, url_image!!, n_total,
-                    n_lidas, status!!, book_note!!, favorite)
+                val bookSelect =
+                    Book(
+                        id, name_book!!, name_author!!, url_image!!, n_total,
+                        n_lidas, status!!, book_note!!, favorite
+                    )
                 editBookViewModel.updateBook(bookSelect)
             Toast.makeText(this, "Livro atualizado com sucesso!", Toast.LENGTH_LONG).show()
             this.finish()

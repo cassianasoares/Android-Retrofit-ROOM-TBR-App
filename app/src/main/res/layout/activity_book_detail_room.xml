@@ -51,6 +51,7 @@
                         android:layout_width="118dp"
                         android:layout_height="175dp"
                         android:layout_marginStart="16dp"
+                        android:elevation="10dp"
                         android:background="@android:color/transparent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -452,7 +453,7 @@
         app:menu_backgroundColor="@android:color/transparent">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item1"
+            android:id="@+id/menu_item1_Room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
@@ -465,7 +466,7 @@
 
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item2"
+            android:id="@+id/menu_item2_Room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_delete"

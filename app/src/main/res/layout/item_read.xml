@@ -62,11 +62,12 @@
 
     <ImageView
         android:id="@+id/image_isfavorite_Read"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/favorite_image_background"
         android:src="@drawable/ic_favorite_main"
         android:visibility="invisible"
+        android:padding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
