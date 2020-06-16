@@ -52,11 +52,12 @@ class BookDetailApiActivity : AppCompatActivity() {
         txt_publisher_api.text = intent.getStringExtra("PUBLISHER")
         txt_n_pages_api.text = nPages.toString()
         txt_categories_api.text = intent.getStringExtra("CATEGORIES")!!.replace("[", "").replace("]", "")
-        txt_idioma_api.text = intent.getStringExtra("LANGUAGE")
+        txt_idioma_api.text = intent.getStringExtra("LANGUAGE")!!.replace("pt", "Portugues").replace("en", "Inglês")
         txt_description_api.text = intent.getStringExtra("DESCRIPTION")
     }
 
     fun saveBookToRead(view: View) {
+        menu_Api.close(true)
         val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, TO_READ, book_note, favorite)
         bookApiViewModel.saveBookFromApi(book)
 
@@ -64,6 +65,7 @@ class BookDetailApiActivity : AppCompatActivity() {
     }
 
     fun saveBookRead(view: View) {
+        menu_Api.close(true)
         val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, ALREADY_READ, book_note, favorite)
         bookApiViewModel.saveBookFromApi(book)
 
@@ -71,6 +73,7 @@ class BookDetailApiActivity : AppCompatActivity() {
     }
 
     fun saveBookReading(view: View) {
+        menu_Api.close(true)
         val book: Book = Book(id!!, name!!, authors!!, url_image!!, nPages!!, nReadPages, READING_NOW, book_note, favorite)
         bookApiViewModel.saveBookFromApi(book)
 
@@ -80,14 +83,6 @@ class BookDetailApiActivity : AppCompatActivity() {
     private fun sendBookData(book: Book){
         val intent = Intent(this, BookDetailRoomActivity::class.java)
         intent.putExtra("UUID", book.uuid)
-        intent.putExtra("NAME", book.name)
-        intent.putExtra("AUTHORS", book.authors)
-        intent.putExtra("IMAGE", book.url_image)
-        intent.putExtra("PAGESTOTAL", book.n_pages)
-        intent.putExtra("PAGESREAD", book.n_read_pages)
-        intent.putExtra("STATUS", book.status)
-        intent.putExtra("NOTE", book.note)
-        intent.putExtra("FAVORITE", book.favorite)
         startActivity(intent)
         onSupportNavigateUp()
     }

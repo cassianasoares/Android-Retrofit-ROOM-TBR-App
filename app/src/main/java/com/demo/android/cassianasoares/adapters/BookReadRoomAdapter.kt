@@ -23,12 +23,18 @@ class BookReadRoomAdapter(val context: Context): RecyclerView.Adapter<BookReadRo
         var txt_book_name = itemView.txt_book_BookRead
         var txt_book_authors = itemView.txt_authors_BookRead
         var ratingBar = itemView.rating_bar_BookRead
+        var image_favorite = itemView.image_isfavorite_Read
 
         fun bind(book: Book){
             Glide.with(itemView).load(book.url_image).into(book_image)
             txt_book_name.text = book.name
             txt_book_authors.text = book.authors
             ratingBar.rating = book.note.toFloat()
+            if (book.favorite == true){
+                image_favorite.visibility = View.VISIBLE
+            }else{
+                image_favorite.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -57,14 +63,6 @@ class BookReadRoomAdapter(val context: Context): RecyclerView.Adapter<BookReadRo
         holder.itemView.setOnClickListener {
             val intent = Intent(context, BookDetailRoomActivity::class.java)
             intent.putExtra("UUID", book.uuid)
-            intent.putExtra("NAME", book.name)
-            intent.putExtra("AUTHORS", book.authors)
-            intent.putExtra("IMAGE", book.url_image)
-            intent.putExtra("PAGESTOTAL", book.n_pages)
-            intent.putExtra("PAGESREAD", book.n_read_pages)
-            intent.putExtra("STATUS", book.status)
-            intent.putExtra("NOTE", book.note)
-            intent.putExtra("FAVORITE", book.favorite)
             (context as AppCompatActivity).startActivity(intent)
         }
     }

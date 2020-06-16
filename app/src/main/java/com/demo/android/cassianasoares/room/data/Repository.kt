@@ -26,6 +26,22 @@ class Repository: BookRepository {
         return book
     }
 
+    override fun updateStatus(status: String, id: String) {
+        AsyncTask.execute { bookDao.updateStatus(status, id)}
+    }
+
+    override fun updatePageRead(n_read_pages: Int, id: String) {
+        AsyncTask.execute { bookDao.updatePageRead(n_read_pages, id) }
+    }
+
+    override fun updateNote(note: Int, id: String) {
+        AsyncTask.execute { bookDao.updateNote(note, id)}
+    }
+
+    override fun updateFavorite(favorite: Boolean, id: String) {
+        AsyncTask.execute { bookDao.updateFavorite(favorite, id)}
+    }
+
     override fun updateBook(book: Book) {
         AsyncTask.execute { bookDao.updateBook(book) }
     }

@@ -54,14 +54,6 @@ class BookToReadRoomAdapter(private val context: Context): RecyclerView.Adapter<
         holder.itemView.setOnClickListener {
             val intent = Intent(context, BookDetailRoomActivity::class.java)
             intent.putExtra("UUID", book.uuid)
-            intent.putExtra("NAME", book.name)
-            intent.putExtra("AUTHORS", book.authors)
-            intent.putExtra("IMAGE", book.url_image)
-            intent.putExtra("PAGESTOTAL", book.n_pages)
-            intent.putExtra("PAGESREAD", book.n_read_pages)
-            intent.putExtra("STATUS", book.status)
-            intent.putExtra("NOTE", book.note)
-            intent.putExtra("FAVORITE", book.favorite)
             (context as AppCompatActivity).startActivity(intent)
         }
     }

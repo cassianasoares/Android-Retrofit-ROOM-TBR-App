@@ -22,13 +22,15 @@ class BookReadingRoomAdapter(val context: Context): RecyclerView.Adapter<BookRea
         var txt_book_name = itemView.txt_book_Reading
         var txt_book_authors = itemView.txt_authors_Reading
         var progressBar = itemView.progressbar_Reading
+        var txt_percent = itemView.txt_percent_Reading
 
         fun bind(book: Book){
             Glide.with(itemView).load(book.url_image).into(book_image)
             txt_book_name.text = book.name
             txt_book_authors.text = book.authors
-            val read_percent = (book.n_read_pages / book.n_pages) * 100
+            val read_percent = (book.n_read_pages * 100) / book.n_pages
             progressBar.progress = read_percent
+            txt_percent.text = read_percent.toString() + "%"
         }
     }
 
@@ -53,16 +55,9 @@ class BookReadingRoomAdapter(val context: Context): RecyclerView.Adapter<BookRea
         val book = books!![position]
 
         holder.itemView.setOnClickListener {
+
             val intent = Intent(context, BookDetailRoomActivity::class.java)
             intent.putExtra("UUID", book.uuid)
-            intent.putExtra("NAME", book.name)
-            intent.putExtra("AUTHORS", book.authors)
-            intent.putExtra("IMAGE", book.url_image)
-            intent.putExtra("PAGESTOTAL", book.n_pages)
-            intent.putExtra("PAGESREAD", book.n_read_pages)
-            intent.putExtra("STATUS", book.status)
-            intent.putExtra("NOTE", book.note)
-            intent.putExtra("FAVORITE", book.favorite)
             (context as AppCompatActivity).startActivity(intent)
         }
     }

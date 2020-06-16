@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="140dp"
-    android:layout_height="242dp"
+    android:layout_width="160dp"
+    android:layout_height="262dp"
     android:orientation="vertical"
-    android:layout_margin="4dp">
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/book_image_Reading"
-        android:layout_width="115dp"
+        android:layout_width="135dp"
         android:src="@drawable/ic_image_default"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -44,7 +44,7 @@
         android:id="@+id/txt_percent_Reading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="20%"
+        android:hint="20%"
         android:textAlignment="center"
         android:textSize="12sp"/>
 

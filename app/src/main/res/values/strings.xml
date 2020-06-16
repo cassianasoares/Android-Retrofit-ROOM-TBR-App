@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TBR Diary</string>
+    <string name="title_aviso">Aviso</string>
+    <string name="massage_campos_invalidos_brancos">Há campos vazios ou invalidos!</string>
+    <string name="msg_lidas_maior_total">Valor de páginas lidas superior ao total de páginas!</string>
+    <string name="title_ok">OK</string>
+    <string name="title_erro">Erro</string>
+    <string name="title_update_pages">Páginas Lidas</string>
+    <string name="cancelar_alert">Cancelar</string>
+    <string-array name="status">
+        <item>Reading</item>
+        <item>To Read</item>
+        <item>Read</item>
+    </string-array>
 </resources>

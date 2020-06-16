@@ -10,6 +10,14 @@ interface BookRepository {
 
     fun getBook(id: String): LiveData<Book>
 
+    fun updateStatus(status: String, id: String)
+
+    fun updatePageRead(n_read_page: Int, id: String)
+
+    fun updateNote(note: Int, id: String)
+
+    fun updateFavorite(favorite: Boolean, id: String)
+
     fun updateBook(book: Book)
 
     fun deleteBook(book: Book)

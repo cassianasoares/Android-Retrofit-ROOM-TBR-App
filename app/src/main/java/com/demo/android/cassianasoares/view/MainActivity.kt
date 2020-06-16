@@ -27,16 +27,22 @@ class MainActivity : AppCompatActivity() {
         initRecyclerViewToRead()
     }
 
-    private fun initRecyclerViewReading(){
+   private fun initRecyclerViewReading(){
+
+
         val bookReadingRoomAdpater = BookReadingRoomAdapter(this@MainActivity)
 
-        mainViewModel.getBooksReadingList("Reading").observe(this, Observer { books ->
-            books.let { bookReadingRoomAdpater.setBooksReading(it) }
-        })
 
-        booksReading_recyclerview.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        booksReading_recyclerview.adapter = bookReadingRoomAdpater
+            mainViewModel.getBooksReadingList("Reading").observe(this, Observer
+            {                books ->
+                books.let { bookReadingRoomAdpater.setBooksReading(it) }
+            })
+
+       booksReading_recyclerview.layoutManager =
+           LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+            booksReading_recyclerview.adapter = bookReadingRoomAdpater
+
     }
 
 
@@ -67,4 +73,5 @@ class MainActivity : AppCompatActivity() {
     fun getBook(view: View) {
         startActivity( Intent(this, SearchActivity::class.java))
     }
+
 }

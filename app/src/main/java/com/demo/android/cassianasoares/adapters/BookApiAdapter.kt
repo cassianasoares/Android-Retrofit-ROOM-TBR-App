@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.item_search.view.*
 
 class BookApiAdapter(private val context: Context, private var books: ArrayList<BookModel>): RecyclerView.Adapter<BookApiAdapter.BookViewHolder>() {
 
-    var link: String = "https://books.google.com/books/content?id=ksdeAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE718AUGEFaRcEfXmQrMoJkYudWE0aB8H58v4-E31cy64tPLAsKo-mtugPqdnZLNA2X3R9m9BbbHP_cGVtljZynhbR8A7ebcUjt9cggp3Lvo0HbaAgwDTAPKuHr-5xF_aYUP-pAqT&source=gbs_api"
-
     class BookViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val book_image = itemView.livro_image
         val txt_book_name = itemView.txt_livro
@@ -31,7 +29,7 @@ class BookApiAdapter(private val context: Context, private var books: ArrayList<
             }
             txt_book_name.text = book.volumeInfo.title
             txt_author_name.text = book.volumeInfo.authors.toString().replace("[", "").replace("]", "")
-            txt_idioma.text = book.volumeInfo.language
+            txt_idioma.text = book.volumeInfo.language.replace("pt", "Portugues").replace("en", "Inglês")
         }
 
     }
