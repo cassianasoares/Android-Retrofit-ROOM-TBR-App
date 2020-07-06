@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.demo.android.cassianasoares.R
 import com.demo.android.cassianasoares.adapters.BookReadRoomAdapter
 import com.demo.android.cassianasoares.adapters.BookReadingRoomAdapter
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun renderData() {
         layout_listbook_loading.visibility = View.GONE
+        layout_listbook_empty.visibility = View.GONE
         layout_listbook_exist.visibility = View.VISIBLE
         initRecyclerViewReading()
         initRecyclerViewRead()
@@ -48,6 +53,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun renderEmptyState() {
         layout_listbook_loading.visibility = View.GONE
+        layout_listbook_exist.visibility = View.GONE
+        layout_listbook_empty.visibility = View.VISIBLE
     }
 
 
@@ -60,21 +67,37 @@ class MainActivity : AppCompatActivity() {
                 books.let { bookReadingRoomAdpater.setBooksReading(it) }
             })
 
-       booksReading_recyclerview.layoutManager =
-           LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+       //booksReading_recyclerview.layoutManager =
+           //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-            booksReading_recyclerview.adapter = bookReadingRoomAdpater
+        booksReading_viewpager2.adapter = bookReadingRoomAdpater
+
+        booksReading_viewpager2.clipToPadding = false
+        booksReading_viewpager2.clipChildren = false
+        booksReading_viewpager2.offscreenPageLimit = 3
+        booksReading_viewpager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(15))
+        compositePageTransformer.addTransformer(object : ViewPager2.PageTransformer {
+
+            override fun transformPage(page: View, position: Float) {
+                val raio : Float = 1 - Math.abs(position)
+                page.scaleY = 0.95f + raio * 0.10f
+            }
+
+        })
+        booksReading_viewpager2.setPageTransformer(compositePageTransformer)
     }
 
     private fun initRecyclerViewRead() {
         val bookReadRoomAdpater = BookReadRoomAdapter(this@MainActivity)
-        val mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         mainViewModel.getBooksReadList("Read").observe(this, Observer { books ->
             books.let { bookReadRoomAdpater.setBooksRead(it) }
         })
 
-        booksRead_recyclerview.layoutManager = mLayoutManager
+        booksRead_recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         booksRead_recyclerview.adapter = bookReadRoomAdpater
     }
 
@@ -99,6 +122,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getCurrentState().observe(this, Observer {
             render(it)
         })
+    }
+
+    fun firstBookSearch(view: View) {
+        startActivity(Intent(this, SearchActivity::class.java))
     }
 
 }
