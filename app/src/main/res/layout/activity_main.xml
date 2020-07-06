@@ -39,7 +39,7 @@
                 android:id="@+id/layout_listbook_exist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -93,19 +93,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/display_reading" />
 
 
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="#C3C3C3"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_lidos" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/booksRead_recyclerview"
                     android:layout_width="match_parent"
@@ -115,7 +102,7 @@
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_lidos" />
 
                 <TextView
                     android:id="@+id/txt_ler"
@@ -127,22 +114,12 @@
                     android:text="Quero Ler"
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/booksRead_recyclerview" />
 
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="#C3C3C3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_ler" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/toRead_recyclerview"
@@ -153,7 +130,7 @@
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view3" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_ler" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

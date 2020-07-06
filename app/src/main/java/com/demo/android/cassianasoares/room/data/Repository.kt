@@ -21,7 +21,6 @@ class Repository: BookRepository {
         return allBooks
     }
 
-
     override fun getAllBooksByStatus(status: String): LiveData<List<Book>> {
         val allToReadBooks by lazy { bookDao.getAllBooksByStatus(status)}
         return allToReadBooks

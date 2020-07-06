@@ -19,20 +19,11 @@ class MainViewModel(var reposiitory: BookRepository): ViewModel() {
 
     fun getCurrentState(): LiveData<ListBookState> = currentState
 
-    fun getBooksReadingList(status: String): LiveData<List<Book>> {
+    fun getAllBooksByStatusList(status: String): LiveData<List<Book>> {
         val allBooksReading = reposiitory.getAllBooksByStatus(status)
         return allBooksReading
     }
 
-    fun getBooksReadList(status: String): LiveData<List<Book>> {
-        val allBooksRead = reposiitory.getAllBooksByStatus(status)
-        return allBooksRead
-    }
-
-    fun getBooksToReadList(status: String): LiveData<List<Book>> {
-        val allBooksToRead = reposiitory.getAllBooksByStatus(status)
-        return allBooksToRead
-    }
 
     fun addStateSources(){
 

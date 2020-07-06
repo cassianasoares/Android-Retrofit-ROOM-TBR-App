@@ -3,6 +3,7 @@ package com.demo.android.cassianasoares.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,13 +63,10 @@ class MainActivity : AppCompatActivity() {
 
         val bookReadingRoomAdpater = BookReadingRoomAdapter(this@MainActivity)
 
-            mainViewModel.getBooksReadingList("Reading").observe(this, Observer
+            mainViewModel.getAllBooksByStatusList("Reading").observe(this, Observer
             {                books ->
                 books.let { bookReadingRoomAdpater.setBooksReading(it) }
             })
-
-       //booksReading_recyclerview.layoutManager =
-           //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         booksReading_viewpager2.adapter = bookReadingRoomAdpater
 
@@ -93,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerViewRead() {
         val bookReadRoomAdpater = BookReadRoomAdapter(this@MainActivity)
 
-        mainViewModel.getBooksReadList("Read").observe(this, Observer { books ->
+        mainViewModel.getAllBooksByStatusList("Read").observe(this, Observer { books ->
             books.let { bookReadRoomAdpater.setBooksRead(it) }
         })
 
@@ -104,15 +102,15 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerViewToRead() {
         val bookToReadRoomAdpater = BookToReadRoomAdapter(this@MainActivity)
 
-        mainViewModel.getBooksToReadList("To Read").observe(this, Observer { books ->
+        mainViewModel.getAllBooksByStatusList("To Read").observe(this, Observer { books ->
             books.let { bookToReadRoomAdpater.setBooksToRead(it) }
         })
 
         toRead_recyclerview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         toRead_recyclerview.adapter = bookToReadRoomAdpater
-    }
 
+    }
 
     fun getBook(view: View) {
         startActivity( Intent(this, SearchActivity::class.java))
