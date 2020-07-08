@@ -1,6 +1,6 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/cassianasoares/Android-Retrofit-ROOM-TBR-App)
-![GitHub top language](https://img.shields.io/github/languages/top/cassianasoares/Android-Retrofit-ROOM-TBR-App)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/cassianasoares/Android-Retrofit-ROOM-TBR-App)
+![GitHub last commit](https://img.shields.io/github/last-commit/cassianasoares/Android-Retrofit-ROOM-TBR-App?color=ff69b4)
 
 
 # TBR Diary App
