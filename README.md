@@ -28,7 +28,7 @@ A Book app to register your read using Google Books Api to query the books and R
 # Features
 
 - Query Google Books Api to find books
-- Query, Insert, Update and Delete books
+- Query, Insert, Update and Delete books in the SQLite
 - Rate and Favorite book
 - Categorize between: reading, already read and want to read
 
