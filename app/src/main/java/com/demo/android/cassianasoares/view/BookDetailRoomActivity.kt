@@ -1,5 +1,6 @@
 package com.demo.android.cassianasoares.view
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -171,9 +172,27 @@ class BookDetailRoomActivity : AppCompatActivity(){
 
     fun deleteBook(view: View) {
         menu_Room.close(true)
-        onSupportNavigateUp()
-        bookRoomViewModel.deleteBook(bookSelect!!)
-        Toast.makeText(this, "Book delete!", Toast.LENGTH_LONG).show()
+
+        val builder = AlertDialog.Builder(this@BookDetailRoomActivity)
+
+        builder.setTitle(R.string.title_aviso)
+        builder.setCancelable(true)
+        builder.setMessage("Tem certeza que deseja excluir esse livro?")
+
+            .setPositiveButton("Deletar") { _, _ ->
+
+                onSupportNavigateUp()
+                bookRoomViewModel.deleteBook(bookSelect!!)
+                Toast.makeText(this, "Book delete!", Toast.LENGTH_LONG).show()
+
+            }
+            // negative button text and action
+            .setNegativeButton(getString(R.string.cancelar_alert)) { dialog, _ ->
+                dialog.cancel()
+            }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
 

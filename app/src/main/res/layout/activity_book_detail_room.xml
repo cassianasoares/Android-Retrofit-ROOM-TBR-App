@@ -214,6 +214,7 @@
                         android:onClick="updatePagesReading"
                         android:padding="2dp"
                         android:src="@drawable/ic_edit"
+                        android:foreground="?attr/selectableItemBackground"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
